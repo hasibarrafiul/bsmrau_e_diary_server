@@ -16,6 +16,9 @@ else{
 <button onclick="window.location.href='noticeShow.php'"> Notices </button> <br><br><br>
 
 
+<button onclick="window.location.href='addfaculty.php'"> addfaculty </button> <br><br><br>
+<button onclick="window.location.href='showfaculty.php'"> show faculty </button> <br><br><br>
+
 
 
 
