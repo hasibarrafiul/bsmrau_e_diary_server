@@ -29,6 +29,7 @@ if (mysqli_num_rows($res) > 0) {
         ?>
             <img src="<?php echo $url; ?>" alt="" />
         <?php
+        echo "<td><a href='deleteevent.php?id=".$row["id"]."'>Delete</a></td>";
     }
 }
 
