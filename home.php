@@ -14,11 +14,6 @@ else{
 <button onclick="window.location.href='addevent.php'">add event</button> <br><br><br>
 <button onclick="window.location.href='addnotice.php'">add Notice</button> <br><br><br>
 <button onclick="window.location.href='noticeShow.php'"> Notices </button> <br><br><br>
-
-
-
-
-
-
-
+<button onclick="window.location.href='addnews.php'">add News</button> <br><br><br>
+<button onclick="window.location.href='newsShow.php'"> News </button> <br><br><br>
 
