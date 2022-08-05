@@ -28,3 +28,7 @@ else{
 <button onclick="window.location.href='newsShow.php'"> News </button> <br><br><br>
 <button onclick="window.location.href='addVideos.php'">add Videos</button> <br><br><br>
 <button onclick="window.location.href='videoShow.php'"> Videos </button> <br><br><br>
+
+<button onclick="window.location.href='addDirectory.php'"> Add Directory </button> <br><br><br>
+<button onclick="window.location.href='directoryShow.php'"> Directory </button> <br><br><br>
+
