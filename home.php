@@ -14,6 +14,16 @@ else{
 <button onclick="window.location.href='addevent.php'">add event</button> <br><br><br>
 <button onclick="window.location.href='addnotice.php'">add Notice</button> <br><br><br>
 <button onclick="window.location.href='noticeShow.php'"> Notices </button> <br><br><br>
+
+
+<button onclick="window.location.href='addfaculty.php'"> addfaculty </button> <br><br><br>
+<button onclick="window.location.href='showfaculty.php'"> show faculty </button> <br><br><br>
+
+
+<button onclick="window.location.href='addofficials.php'"> Add officials </button> <br><br><br>
+<button onclick="window.location.href='showofficials.php'"> show officials </button> <br><br><br>
+
+
 <button onclick="window.location.href='addnews.php'">add News</button> <br><br><br>
 <button onclick="window.location.href='newsShow.php'"> News </button> <br><br><br>
 <button onclick="window.location.href='addVideos.php'">add Videos</button> <br><br><br>
