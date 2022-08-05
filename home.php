@@ -20,7 +20,8 @@ else{
 <button onclick="window.location.href='showfaculty.php'"> show faculty </button> <br><br><br>
 
 
-
+<button onclick="window.location.href='addofficials.php'"> Add officials </button> <br><br><br>
+<button onclick="window.location.href='showofficials.php'"> show officials </button> <br><br><br>
 
 
 

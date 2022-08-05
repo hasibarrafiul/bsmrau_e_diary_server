@@ -22,9 +22,9 @@ if (!$conn) {
 }
 
 $id = $_GET['id'];
-$sql = "DELETE FROM faculty WHERE id = '$id'";
+$sql = "DELETE FROM officials WHERE id = '$id'";
 if (mysqli_query($conn, $sql)) {
-    echo "Faculty Deleted Successfully";
+    echo "Officials Deleted Successfully";
     } 
 else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
