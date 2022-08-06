@@ -56,7 +56,7 @@ if(isset($_POST["submit"]) && !empty($_FILES["file"]["name"])){
         echo "Unsupported file type";
     }
 }else{
-    echo "Select a picture";
+    echo "Please Select a picture";
 }
 
 ?>
