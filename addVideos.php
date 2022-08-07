@@ -43,6 +43,18 @@ if(isset($_POST["submit"]) && !empty($videolink)){
     echo "Insert a Video Link";
 }
 
+$sql = "SELECT * from videos ";
+$res = mysqli_query($conn, $sql);
+if (mysqli_num_rows($res) > 0) {
+    while($row = mysqli_fetch_assoc($res)) {
+        echo "Video Link: " . $row["videolink"]. "<br>";
+        ?>
+        <?php
+        echo "<td><a href='deleteVideo.php?id=".$row["id"]."'>Delete</a></td>";
+    }
+}
+
+echo "<br><br>";
 ?>
 
 

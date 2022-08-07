@@ -67,6 +67,26 @@ if(isset($_POST["submit"]) && !empty($_FILES["file"]["name"])){
     echo "Select a picture";
 }
 
+$sql = "SELECT * from officials ";
+$res = mysqli_query($conn, $sql);
+if (mysqli_num_rows($res) > 0) {
+    while($row = mysqli_fetch_assoc($res)) {
+        $url = 'officialsimage/'.$row["image"];
+        echo "Name: " . $row["name"]. "<br>";
+        echo "designation: " . $row["designation"]. "<br>";
+        echo "Department: " . $row["department"]. "<br>";
+        echo "Mobile Number: " . $row["mobilenumber"]. "<br>";
+        echo "Email: " . $row["email"]. "<br>";
+        echo "Office Number: " . $row["officenumber"]. "<br>";
+        ?>
+            <img src="<?php echo $url; ?>" alt="" />
+        <?php
+        echo "<td><a href='deleteofficials.php?id=".$row["id"]."'>Delete</a></td>";
+    }
+}
+
+echo "<br><br>";
+
 ?>
 
 

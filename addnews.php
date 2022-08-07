@@ -59,6 +59,22 @@ if(isset($_POST["submit"]) && !empty($_FILES["file"]["name"])){
     echo "Select a picture";
 }
 
+$sql = "SELECT * from news ";
+$res = mysqli_query($conn, $sql);
+if (mysqli_num_rows($res) > 0) {
+    while($row = mysqli_fetch_assoc($res)) {
+        $url = 'newsimage/'.$row["newsimage"];
+        echo "News Heading: " . $row["newsheading"]. "<br>";
+        echo "News Detail: " . $row["newscontent"]. "<br>";
+        ?>
+            <img src="<?php echo $url; ?>" alt="" />
+        <?php
+        echo "<td><a href='deleteNews.php?id=".$row["id"]."'>Delete</a></td>";
+    }
+}
+
+echo "<br><br>";
+
 ?>
 
 

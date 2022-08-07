@@ -45,6 +45,21 @@ if(isset($_POST["submit"]) && !empty($catagory)){
     echo "Insert a catagory ";
 }
 
+
+$sql = "SELECT * from directory ";
+$res = mysqli_query($conn, $sql);
+if (mysqli_num_rows($res) > 0) {
+    while($row = mysqli_fetch_assoc($res)) {
+        echo "Catagory: " . $row["catagory"]. "<br>";
+        echo "Department: " . $row["department"]. "<br>";
+        ?>
+        <?php
+        echo "<td><a href='deleteDirectory.php?id=".$row["id"]."'>Delete</a></td>";
+    }
+}
+
+echo "<br><br>";
+
 ?>
 
 
