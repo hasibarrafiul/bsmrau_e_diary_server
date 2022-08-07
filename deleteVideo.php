@@ -1,10 +1,10 @@
 <?php
 session_start();
 $loggedin = $_SESSION['logedin'];
-if($loggedin == 'true'){
-    echo "Welcome ".$_SESSION['username']. '<br><br>';
+if ($loggedin == 'true') {
+    echo "Welcome " . $_SESSION['username'] . '<br><br>';
 }
-else{
+else {
     header('location:login.php');
 }
 ?>
@@ -25,7 +25,9 @@ $id = $_GET['id'];
 $sql = "DELETE FROM videos WHERE id = '$id'";
 if (mysqli_query($conn, $sql)) {
     echo "Video Deleted Successfully";
-    } 
+    header('location:addVideos.php');
+}
+
 else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
