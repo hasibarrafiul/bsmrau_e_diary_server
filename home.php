@@ -11,8 +11,7 @@ else{
 
 <button onclick="window.location.href='login.php'">Logout</button> <br><br><br>
 <button onclick="window.location.href='addevent.php'">event</button> <br><br><br>
-<button onclick="window.location.href='addnotice.php'">add Notice</button> <br><br><br>
-<button onclick="window.location.href='noticeShow.php'"> Notices </button> <br><br><br>
+<button onclick="window.location.href='addnotice.php'">Notice</button> <br><br><br>
 
 
 <button onclick="window.location.href='addfaculty.php'"> addfaculty </button> <br><br><br>
