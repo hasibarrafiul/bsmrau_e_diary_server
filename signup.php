@@ -13,28 +13,22 @@ if (!$conn) {
 }
 
 
-if(isset($_POST['submit'])){
-$username = $_POST['username'];
-$password = $_POST['password'];
-$repassword = $_POST['repassword'];
-if($username != "" && $password != ""){
-    if($password == $repassword){
-        $encpt_password = hash('sha256', $password);
-        $sql = "INSERT INTO users (username, password) VALUES ('$username', '$encpt_password')";
-        if (mysqli_query($conn, $sql)) {
-            echo "User Created Successfully";
-            header('location:login.php');
-        } else {
-            echo "User already exists";
+if (isset($_POST['submit'])) {    $username = $_POST['username'];    $password = $_POST['password'];    $repassword = $_POST['repassword'];    if ($username != "" && $password != "") {
+        if ($password == $repassword) {
+            $encpt_password = hash('sha256', $password);
+            $sql = "INSERT INTO users (username, password) VALUES ('$username', '$encpt_password')";
+            if (mysqli_query($conn, $sql)) {
+                echo "User Created Successfully";
+                header('location:login.php');
+            }
+            else {
+                echo "User already exists";
+            }
         }
-    }
-    else{
-        echo "Both Password must be same";
-    }
-}
-else{
-    echo "Username and Password must be filled";
-}
+        else {
+            echo "Both Password must be same";
+        }    }    else {
+        echo "Username and Password must be filled";    }
 }
 
 
