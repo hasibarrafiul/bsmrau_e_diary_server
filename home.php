@@ -14,8 +14,7 @@ else{
 <button onclick="window.location.href='addnotice.php'">Notice</button> <br><br><br>
 
 
-<button onclick="window.location.href='addfaculty.php'"> addfaculty </button> <br><br><br>
-<button onclick="window.location.href='showfaculty.php'"> show faculty </button> <br><br><br>
+<button onclick="window.location.href='addfaculty.php'"> Faculty </button> <br><br><br>
 
 
 <button onclick="window.location.href='addofficials.php'"> Add officials </button> <br><br><br>
