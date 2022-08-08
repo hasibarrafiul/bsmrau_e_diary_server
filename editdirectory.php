@@ -93,6 +93,12 @@ if (!$conn) {
 
 						<?php
 }
+				$id = $_GET['id'];
+				$sql2 = "SELECT * from directory where id = '$id'";
+				$res2 = mysqli_query($conn, $sql2);
+				$row2 = mysqli_fetch_assoc($res2);
+				$catagory = $row2["catagory"];
+				$department = $row2["department"];
 ?>
 
 				</div>
@@ -112,11 +118,11 @@ if (!$conn) {
 					<input type="hidden" name="new" value="1" />
 					<div class="col-md-6 mb-3">
 						<label for="exampleFormControlInput1" class="form-label fw-bold">Directory catagory</label>
-						<input type="text" class="form-control" id="exampleFormControlInput1" name="catagory" placeholder="Enter catagory" required>
+						<input type="text" class="form-control" id="exampleFormControlInput1" name="catagory" placeholder="Enter catagory" required value="<?php echo $catagory ?>">
 					</div>
                     <div class="col-md-6 mb-3">
 						<label for="exampleFormControlInput1" class="form-label fw-bold">Directory department</label>
-						<input type="text" class="form-control" id="exampleFormControlInput1" name="department" placeholder="Enter department" required>
+						<input type="text" class="form-control" id="exampleFormControlInput1" name="department" placeholder="Enter department" required value="<?php echo $department ?>">
 					</div>
 					<div class="col-12 text-center">
 						<button id="liveAlertBtn" name="submit" type="submit" value="Upload" class="btn btn-primary btn-lg">Submit</button>

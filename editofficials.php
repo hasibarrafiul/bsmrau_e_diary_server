@@ -94,6 +94,16 @@ if (!$conn) {
 
 <?php
 }
+			$id = $_GET['id'];
+			$sql2 = "SELECT * from officials where id = '$id'";
+			$res2 = mysqli_query($conn, $sql2);
+			$row2 = mysqli_fetch_assoc($res2);
+			$name = $row2["name"];
+			$designation = $row2["designation"];
+			$department = $row2["department"];
+			$mobilenumber = $row2["mobilenumber"];
+			$email = $row2["email"];
+			$officenumber = $row2["officenumber"];
 ?>
 
 				</div>
@@ -113,31 +123,31 @@ if (!$conn) {
 					<input type="hidden" name="new" value="1" />
 					<div class="col-md-6 mb-3">
 						<label for="exampleFormControlInput1" class="form-label fw-bold">Officials Name</label>
-						<input type="text" class="form-control" id="exampleFormControlInput1" name="name" placeholder="Enter Name" required>
+						<input type="text" class="form-control" id="exampleFormControlInput1" name="name" placeholder="Enter Name" required value="<?php echo $name ?>">
 					</div>
                     <div class="col-md-6 mb-3">
 						<label for="exampleFormControlInput1" class="form-label fw-bold">Officials Designation</label>
-						<input type="text" class="form-control" id="exampleFormControlInput1" name="designation" placeholder="Enter designation" required>
+						<input type="text" class="form-control" id="exampleFormControlInput1" name="designation" placeholder="Enter designation" required value="<?php echo $designation ?>">
 					</div>
                     
 					<div class="col-md-6 mb-3">
 						<label for="exampleFormControlInput1" class="form-label fw-bold">Officials Department</label>
-						<input type="text" class="form-control" id="exampleFormControlInput1" name="department" placeholder="Enter department" required>
+						<input type="text" class="form-control" id="exampleFormControlInput1" name="department" placeholder="Enter department" required value="<?php echo $department ?>">
 					</div>
 
                     <div class="col-md-6 mb-3">
 						<label for="exampleFormControlInput1" class="form-label fw-bold">Officials email</label>
-						<input type="email" class="form-control" id="exampleFormControlInput1" name="email" placeholder="Enter email" required>
+						<input type="email" class="form-control" id="exampleFormControlInput1" name="email" placeholder="Enter email" required value="<?php echo $email ?>">
 					</div>
                     
 					<div class="col-md-6 mb-3">
 						<label for="exampleFormControlInput1" class="form-label fw-bold">Officials mobile number</label>
-						<input type="text" class="form-control" id="exampleFormControlInput1" name="mobilenumber" placeholder="Enter mobile number" required>
+						<input type="text" class="form-control" id="exampleFormControlInput1" name="mobilenumber" placeholder="Enter mobile number" required value="<?php echo $mobilenumber ?>">
 					</div>
                     
 					<div class="col-md-6 mb-3">
 						<label for="exampleFormControlInput1" class="form-label fw-bold">Officials office number</label>
-						<input type="text" class="form-control" id="exampleFormControlInput1" name="officenumber" placeholder="Enter office number" required>
+						<input type="text" class="form-control" id="exampleFormControlInput1" name="officenumber" placeholder="Enter office number" required value="<?php echo $officenumber ?>">
 					</div>
                     
 					<div class="col-md-12">
