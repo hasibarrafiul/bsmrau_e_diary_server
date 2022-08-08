@@ -95,6 +95,11 @@ if (isset($_SESSION["username"])) { ?>
 
 						<?php
 }
+				$id = $_GET['id'];
+				$sql2 = "SELECT * from videos where id = '$id'";
+				$res2 = mysqli_query($conn, $sql2);
+				$row2 = mysqli_fetch_assoc($res2);
+				$videolink = $row2["videolink"];
 ?>
 
 				</div>
@@ -114,7 +119,7 @@ if (isset($_SESSION["username"])) { ?>
 					<input type="hidden" name="new" value="1" />
 					<div class="col-md-12 mb-3">
 						<label for="exampleFormControlInput1" class="form-label fw-bold">Video Link</label>
-						<input type="text" class="form-control" id="exampleFormControlInput1" name="videolink" placeholder="Enter Video link" required>
+						<input type="text" class="form-control" id="exampleFormControlInput1" name="videolink" placeholder="Enter Video link" required value="<?php echo $videolink ?>">
 					</div>
 					<div class="col-12 text-center">
 						<button id="liveAlertBtn" name="submit" type="submit" value="Upload" class="btn btn-primary btn-lg">Submit</button>

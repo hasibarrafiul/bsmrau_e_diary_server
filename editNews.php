@@ -94,6 +94,12 @@ if (isset($_SESSION["username"])) { ?>
 
 						<?php
 }
+				$id = $_GET['id'];
+				$sql2 = "SELECT * from news where id = '$id'";
+				$res2 = mysqli_query($conn, $sql2);
+				$row2 = mysqli_fetch_assoc($res2);
+				$newsheading = $row2["newsheading"];
+				$newscontent = $row2["newscontent"];
 ?>
 
 				</div>
@@ -113,7 +119,7 @@ if (isset($_SESSION["username"])) { ?>
 					<input type="hidden" name="new" value="1" />
 					<div class="col-md-6 mb-3">
 						<label for="exampleFormControlInput1" class="form-label fw-bold">News Heading</label>
-						<input type="text" class="form-control" id="exampleFormControlInput1" name="heading" placeholder="Enter Heading" required>
+						<input type="text" class="form-control" id="exampleFormControlInput1" name="heading" placeholder="Enter Heading" required value="<?php echo $newsheading ?>">
 					</div>
 					<div class="col-md-6">
 						<label for="formFile" class="form-label fw-bold">News Heading Image</label>
@@ -121,7 +127,7 @@ if (isset($_SESSION["username"])) { ?>
 					</div>
 					<div class="col-md-12 mb-3">
 						<label for="exampleFormControlTextarea1" class="form-label fw-bold">News Content</label>
-						<textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="content" placeholder="Enter Content" required></textarea>
+						<textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="content" placeholder="Enter Content" required><?php echo $newscontent ?></textarea>
 					</div>
 					<div class="col-12 text-center">
 						<button id="liveAlertBtn" name="submit" type="submit" value="Upload" class="btn btn-primary btn-lg">Submit</button>
