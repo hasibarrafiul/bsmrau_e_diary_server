@@ -215,10 +215,10 @@ if (isset($_POST["submit"]) && !empty($_FILES["file"]["name"])) {
 						</thead>
 						<tbody>
 							<?php
-$count = 1;
-$sel_query = "Select * from officials ORDER BY id desc;";
-$result = mysqli_query($conn, $sel_query);
-while ($row = mysqli_fetch_assoc($result)) { ?>
+					$count = 1;
+					$sel_query = "Select * from officials ORDER BY id desc;";
+					$result = mysqli_query($conn, $sel_query);
+					while ($row = mysqli_fetch_assoc($result)) { ?>
 							<tr>
 								<td><?php echo $count; ?></td>
 								<td><?php echo '<img src="officialsimage/' . $row["image"] . '" alt="HTML5 Icon" style="width:128px;height:128px">'; ?></td>
