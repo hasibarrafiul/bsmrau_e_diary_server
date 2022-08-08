@@ -152,17 +152,18 @@ if (isset($_SESSION["username"])) { ?>
 			<div class="col-2"></div>
 		</div>
 		<?php
-$dir = "facultyimage/";
-$fileName = basename($_FILES["file"]["name"]);
-$path = $dir . $fileName;
-$type = pathinfo($path, PATHINFO_EXTENSION);
-$name = $_POST["name"];
-$designation = $_POST["designation"];
-$department = $_POST["department"];
-$mobilenumber = $_POST["mobilenumber"];
-$email = $_POST["email"];
-$officenumber = $_POST["officenumber"];
+
 if (isset($_POST["submit"]) && !empty($_FILES["file"]["name"])) {
+	$dir = "facultyimage/";
+	$fileName = basename($_FILES["file"]["name"]);
+	$path = $dir . $fileName;
+	$type = pathinfo($path, PATHINFO_EXTENSION);
+	$name = $_POST["name"];
+	$designation = $_POST["designation"];
+	$department = $_POST["department"];
+	$mobilenumber = $_POST["mobilenumber"];
+	$email = $_POST["email"];
+	$officenumber = $_POST["officenumber"];
     $allowed = ["jpg", "png", "jpeg", "gif", "pdf"];
     if (in_array($type, $allowed)) {
         if (move_uploaded_file($_FILES["file"]["tmp_name"], $path)) {

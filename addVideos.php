@@ -125,9 +125,9 @@ if (isset($_SESSION["username"])) { ?>
 		</div>
 		<?php
 
-$videolink = $_POST['videolink'];
 
-if(isset($_POST["submit"]) && !empty($videolink)){
+if(isset($_POST["submit"]) && !empty($_POST["videolink"])){
+		$videolink = $_POST['videolink'];
         $insert = "INSERT into videos (videolink, date) VALUES ('$videolink', NOW())";
         $res = mysqli_query($conn, $insert);
         if($insert){
@@ -164,7 +164,7 @@ if(isset($_POST["submit"]) && !empty($videolink)){
 						<tbody>
 							<?php
 $count = 1;
-$sel_query = "Select * from news ORDER BY id desc;";
+$sel_query = "Select * from videos ORDER BY id desc;";
 $result = mysqli_query($conn, $sel_query);
 while ($row = mysqli_fetch_assoc($result)) { ?>
 							<tr>

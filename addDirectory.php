@@ -46,8 +46,8 @@ if (!$conn) {
 									<a class="nav-link active" aria-current="page" href="#">Home</a>
 								</li> -->
 						<?php
-if (isset($_SESSION["username"])) {
-    if ($_SESSION["username"] == "admin") { ?>
+	if (isset($_SESSION["username"])) {
+    	if ($_SESSION["username"] == "admin") { ?>
 						<li class="nav-item">
 							<a class="nav-link" href="home.php">Home</a>
 						</li>
@@ -128,10 +128,11 @@ if (isset($_SESSION["username"])) { ?>
 		</div>
 		<?php
 
-$catagory = $_POST['catagory'];
-$department = $_POST['department'];
 
-if(isset($_POST["submit"]) && !empty($catagory)){
+
+if(isset($_POST["submit"]) && !empty($_POST["catagory"])){
+		$catagory = $_POST['catagory'];
+		$department = $_POST['department'];
         $insert = "INSERT into directory (catagory, department) VALUES ('$catagory', '$department')";
         $res = mysqli_query($conn, $insert);
         if($insert){

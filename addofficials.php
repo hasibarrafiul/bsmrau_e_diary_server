@@ -88,7 +88,8 @@ if (isset($_SESSION["username"])) { ?>
 							</ul>
 						</li>
 						<?php
-} else { ?>
+} else { 
+	?>
 						<li class="nav-item">
 							<a class="btn btn-outline-primary fw-bold" class="nav-link text-primary" href="login.php">Login</a>
 						</li>
@@ -153,17 +154,18 @@ if (isset($_SESSION["username"])) { ?>
 			<div class="col-2"></div>
 		</div>
 		<?php
-$dir = "officialsimage/";
-$fileName = basename($_FILES["file"]["name"]);
-$path = $dir . $fileName;
-$type = pathinfo($path, PATHINFO_EXTENSION);
-$name = $_POST["name"];
-$designation = $_POST["designation"];
-$department = $_POST["department"];
-$mobilenumber = $_POST["mobilenumber"];
-$email = $_POST["email"];
-$officenumber = $_POST["officenumber"];
+
 if (isset($_POST["submit"]) && !empty($_FILES["file"]["name"])) {
+	$dir = "officialsimage/";
+	$fileName = basename($_FILES["file"]["name"]);
+	$path = $dir . $fileName;
+	$type = pathinfo($path, PATHINFO_EXTENSION);
+	$name = $_POST["name"];
+	$designation = $_POST["designation"];
+	$department = $_POST["department"];
+	$mobilenumber = $_POST["mobilenumber"];
+	$email = $_POST["email"];
+	$officenumber = $_POST["officenumber"];
     $allowed = ["jpg", "png", "jpeg", "gif", "pdf"];
     if (in_array($type, $allowed)) {
         if (move_uploaded_file($_FILES["file"]["tmp_name"], $path)) {
@@ -171,7 +173,7 @@ if (isset($_POST["submit"]) && !empty($_FILES["file"]["name"])) {
             $res = mysqli_query($conn, $insert);
             if ($insert) {
                 echo "Event Added";
-                header("location: addofficials.php");
+                header('location: addofficials.php');
             } else {
                 echo "Error";
             }

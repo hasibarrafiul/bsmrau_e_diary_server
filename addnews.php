@@ -131,13 +131,14 @@ if (isset($_SESSION["username"])) { ?>
 			<div class="col-2"></div>
 		</div>
 		<?php
-$dir = "newsimage/";
-$fileName = basename($_FILES["file"]["name"]);
-$path = $dir . $fileName;
-$type = pathinfo($path, PATHINFO_EXTENSION);
-$heading = $_POST["heading"];
-$content = $_POST["content"];
+
 if (isset($_POST["submit"]) && !empty($_FILES["file"]["name"])) {
+	$dir = "newsimage/";
+	$fileName = basename($_FILES["file"]["name"]);
+	$path = $dir . $fileName;
+	$type = pathinfo($path, PATHINFO_EXTENSION);
+	$heading = $_POST["heading"];
+	$content = $_POST["content"];
     $allowed = ["jpg", "png", "jpeg", "gif", "pdf"];
     if (in_array($type, $allowed)) {
         if (move_uploaded_file($_FILES["file"]["tmp_name"], $path)) {

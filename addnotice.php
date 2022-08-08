@@ -136,13 +136,14 @@ if (isset($_SESSION["username"])) { ?>
 
 
 		<?php
-$dir = "noticeimage/";
-$fileName = basename($_FILES["file"]["name"]);
-$path = $dir . $fileName;
-$type = pathinfo($path, PATHINFO_EXTENSION);
-$heading = $_POST["heading"];
-$content = $_POST["details"];
+
 if (isset($_POST["submit"]) && !empty($_FILES["file"]["name"])) {
+	$dir = "noticeimage/";
+	$fileName = basename($_FILES["file"]["name"]);
+	$path = $dir . $fileName;
+	$type = pathinfo($path, PATHINFO_EXTENSION);
+	$heading = $_POST["heading"];
+	$content = $_POST["details"];
     $allowed = ["jpg", "png", "jpeg", "gif", "pdf"];
     if (in_array($type, $allowed)) {
         if (move_uploaded_file($_FILES["file"]["tmp_name"], $path)) {

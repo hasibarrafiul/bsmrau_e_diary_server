@@ -45,8 +45,8 @@ if (!$conn) {
 									<a class="nav-link active" aria-current="page" href="#">Home</a>
 								</li> -->
 						<?php
-if (isset($_SESSION["username"])) {
-    if ($_SESSION["username"] == "admin") { ?>
+				if (isset($_SESSION["username"])) {
+					if ($_SESSION["username"] == "admin") { ?>
 						<li class="nav-item">
 							<a class="nav-link" href="home.php">Home</a>
 						</li>
@@ -130,13 +130,14 @@ if (isset($_SESSION["username"])) { ?>
 			<div class="col-2"></div>
 		</div>
 		<?php
-$dir = "eventimage/";
-$fileName = basename($_FILES["file"]["name"]);
-$path = $dir . $fileName;
-$type = pathinfo($path, PATHINFO_EXTENSION);
-$heading = $_POST["heading"];
-$content = $_POST["content"];
+
 if (isset($_POST["submit"]) && !empty($_FILES["file"]["name"])) {
+	$dir = "eventimage/";
+	$fileName = basename($_FILES["file"]["name"]);
+	$path = $dir . $fileName;
+	$type = pathinfo($path, PATHINFO_EXTENSION);
+	$heading = $_POST["heading"];
+	$content = $_POST["content"];
     $allowed = ["jpg", "png", "jpeg", "gif", "pdf"];
     if (in_array($type, $allowed)) {
         if (move_uploaded_file($_FILES["file"]["tmp_name"], $path)) {
@@ -183,10 +184,10 @@ if (isset($_POST["submit"]) && !empty($_FILES["file"]["name"])) {
 						</thead>
 						<tbody>
 							<?php
-$count = 1;
-$sel_query = "Select * from events ORDER BY id desc;";
-$result = mysqli_query($conn, $sel_query);
-while ($row = mysqli_fetch_assoc($result)) { ?>
+							$count = 1;
+							$sel_query = "Select * from events ORDER BY id desc;";
+							$result = mysqli_query($conn, $sel_query);
+							while ($row = mysqli_fetch_assoc($result)) { ?>
 							<tr>
 								<td><?php echo $count; ?></td>
 								<td><?php echo '<img src="eventimage/' . $row["headingimage"] . '" alt="HTML5 Icon" style="width:128px;height:128px">'; ?></td>
