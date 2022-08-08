@@ -102,7 +102,7 @@ if (isset($_SESSION["username"])) { ?>
 		<div class="row">
 			<div class="col-2"></div>
 			<div class="col-8">
-				<h1 class="text-center m-2 mb-4 p-1 border border-dark border-3 border-top-0 border-end-0 rounded">Insert News</h1>
+				<h1 class="text-center m-2 mb-4 p-1 border border-dark border-3 border-top-0 border-end-0 rounded">Edit News</h1>
 			</div>
 			<div class="col-2"></div>
 		</div>
@@ -117,7 +117,7 @@ if (isset($_SESSION["username"])) { ?>
 					</div>
 					<div class="col-md-6">
 						<label for="formFile" class="form-label fw-bold">News Heading Image</label>
-						<input class="form-control" type="file" id="formFile" name="file" required>
+						<input class="form-control" type="file" id="formFile" name="file" >
 					</div>
 					<div class="col-md-12 mb-3">
 						<label for="exampleFormControlTextarea1" class="form-label fw-bold">News Content</label>
@@ -133,20 +133,21 @@ if (isset($_SESSION["username"])) { ?>
 		<?php
 
 if (isset($_POST["submit"]) && !empty($_FILES["file"]["name"])) {
-	$dir = "newsimage/";
+	$dir = "noticeimage/";
 	$fileName = basename($_FILES["file"]["name"]);
 	$path = $dir . $fileName;
 	$type = pathinfo($path, PATHINFO_EXTENSION);
 	$heading = $_POST["heading"];
 	$content = $_POST["content"];
+    $id = $_GET["id"];
     $allowed = ["jpg", "png", "jpeg", "gif", "pdf"];
     if (in_array($type, $allowed)) {
         if (move_uploaded_file($_FILES["file"]["tmp_name"], $path)) {
-            $insert = "INSERT into news (newsheading, newscontent, newsimage, created_on) VALUES ('$heading', '$content', '$fileName', NOW())";
+            $insert = "UPDATE news SET newsheading= '$heading', newscontent='$content', newsimage='$fileName' WHERE id= '$id'";
             $res = mysqli_query($conn, $insert);
             if ($insert) {
-                echo "Event Added";
-                header("location:addnews.php");
+                echo "News Edited Successfully";
+                echo("<script>location.href = 'addNews.php';</script>");
             } else {
                 echo "Error";
             }
@@ -158,57 +159,26 @@ if (isset($_POST["submit"]) && !empty($_FILES["file"]["name"])) {
     }
 } else {
 }
-?>
-		<div class="row">
-			<div class="col-2"></div>
-			<div class="col-8">
-				<h1 class="text-center m-2 mb-4 p-1 border border-dark border-3 border-top-0 border-end-0 rounded">View News</h1>
-			</div>
-			<div class="col-2"></div>
-		</div>
-		<div class="row">
-			<div class="col-1"></div>
-			<div class="col-10">
-				<div class="row table-responsive m-3">
-					<table class="table table-lg align-middle">
-						<thead class="table-dark">
-							<tr>
-								<th class="text-center border"><strong>S.No</strong></th>
-								<th class="text-center border"><strong>Image</strong></th>
-								<th class="text-center border"><strong>Heading</strong></th>
-								<th class="text-center border"><strong>Created</strong></th>
-								<th class="text-center border"><strong>Details</strong></th>
-								<th class="text-center border"><strong>Action</strong></th>
 
-							</tr>
-						</thead>
-						<tbody>
-							<?php
-$count = 1;
-$sel_query = "Select * from news ORDER BY id desc;";
-$result = mysqli_query($conn, $sel_query);
-while ($row = mysqli_fetch_assoc($result)) { ?>
-							<tr>
-								<td><?php echo $count; ?></td>
-								<td><?php echo '<img src="newsimage/' . $row["newsimage"] . '" alt="HTML5 Icon" style="width:128px;height:128px">'; ?></td>
-								<td><?php echo $row["newsheading"]; ?></td>
-								<td><?php echo $row["created_on"]; ?></td>
-								<td><?php echo $row["newscontent"]; ?></td>
-								<td>
-									<a class="btn btn-danger" href="deleteNews.php?id=<?=$row["id"] ?>">Delete</a>
-									<a class="btn btn-danger" href="editNews.php?id=<?=$row["id"] ?>">Edit</a>
-								</td>
-							</tr>
-							<?php $count++;
+if (isset($_POST["submit"]) && empty($_FILES["file"]["name"])) {
+	$heading = $_POST["heading"];
+	$content = $_POST["content"];
+    $id = $_GET["id"];
+            $insert = "UPDATE news SET newsheading= '$heading', newscontent='$content' WHERE id= '$id'";
+            $res = mysqli_query($conn, $insert);
+            if ($insert) {
+                echo "News Edited Successfully";
+                echo("<script>location.href = 'addNews.php';</script>");
+            } else {
+                echo "Error";
+            }
+
+} else {
 }
+
+
 ?>
-						</tbody>
-					</table>
-				</div>
-			</div>
-			<div class="col-1"></div>
-		</div>
-	</div>
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
