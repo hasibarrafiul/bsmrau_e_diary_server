@@ -46,8 +46,8 @@ if (!$conn) {
 									<a class="nav-link active" aria-current="page" href="#">Home</a>
 								</li> -->
 						<?php
-if (isset($_SESSION["username"])) {
-    if ($_SESSION["username"] == "admin") { ?>
+			if (isset($_SESSION["username"])) {
+    			if ($_SESSION["username"] == "admin") { ?>
 						<li class="nav-item">
 							<a class="nav-link" href="home.php">Home</a>
 						</li>
@@ -76,7 +76,7 @@ if (isset($_SESSION["username"])) {
 						<?php
     }
 }
-if (isset($_SESSION["username"])) { ?>
+			if (isset($_SESSION["username"])) { ?>
 
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -170,8 +170,9 @@ if (isset($_POST["submit"]) && !empty($_FILES["file"]["name"])) {
             $insert = "INSERT into faculty (name, designation, department, mobilenumber, email, officenumber, image) VALUES ('$name', '$designation', '$department', '$mobilenumber', '$email', '$officenumber', '$fileName')";
             $res = mysqli_query($conn, $insert);
             if ($insert) {
-                echo "Event Added";
+                echo "Faculty Added";
                 header("location:addfaculty.php");
+				$_POST["name"] = "";
             } else {
                 echo "Error";
             }
@@ -182,7 +183,6 @@ if (isset($_POST["submit"]) && !empty($_FILES["file"]["name"])) {
         echo "Unsupported file type";
     }
 } else {
-    echo "Select an Profile picture";
 }
 ?>
 		<div class="row">
