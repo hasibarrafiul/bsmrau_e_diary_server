@@ -173,7 +173,8 @@ if (isset($_POST["submit"]) && !empty($_FILES["file"]["name"])) {
             $res = mysqli_query($conn, $insert);
             if ($insert) {
                 echo "Event Added";
-                header('location: addofficials.php');
+                //header('location: addofficials.php');
+				echo("<script>location.href = 'addofficials.php';</script>");
             } else {
                 echo "Error";
             }

@@ -92,7 +92,7 @@ if (!$conn) {
 							<a class="btn btn-outline-primary fw-bold" class="nav-link text-primary" href="login.php">Login</a>
 						</li>
 
-						<?php
+<?php
 }
 ?>
 
@@ -171,8 +171,8 @@ if (isset($_POST["submit"]) && !empty($_FILES["file"]["name"])) {
             $res = mysqli_query($conn, $insert);
             if ($insert) {
                 echo "Faculty Added";
-                header("location:addfaculty.php");
-				$_POST["name"] = "";
+                //header("location:addfaculty.php");
+				echo("<script>location.href = 'addfaculty.php';</script>");
             } else {
                 echo "Error";
             }
