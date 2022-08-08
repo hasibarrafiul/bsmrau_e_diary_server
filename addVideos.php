@@ -137,7 +137,6 @@ if(isset($_POST["submit"]) && !empty($_POST["videolink"])){
             echo "Error";
         }
 }else{
-    echo "Insert a Video Link";
 }
 ?>
 		<div class="row">

@@ -76,8 +76,7 @@ if (!$conn) {
 						<?php
     }
 }
-if (isset($_SESSION["username"])) { ?>
-
+			if (isset($_SESSION["username"])) { ?>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 								Welcome <strong class="text-black"><?php echo $_SESSION["username"]; ?></strong>
@@ -142,7 +141,6 @@ if(isset($_POST["submit"]) && !empty($_POST["catagory"])){
             echo "Error";
         }
 }else{
-    echo "Insert a catagory ";
 }
 
 ?>

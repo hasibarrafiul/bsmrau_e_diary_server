@@ -162,7 +162,6 @@ if (isset($_POST["submit"]) && !empty($_FILES["file"]["name"])) {
         echo "Unsupported file type";
     }
 } else {
-    echo "Select an Profile picture";
 }
 ?>
 		<div class="row">
