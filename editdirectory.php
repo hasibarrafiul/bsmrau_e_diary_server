@@ -136,7 +136,7 @@ if(isset($_POST["submit"]) && !empty($_POST["catagory"])){
         $insert = "UPDATE directory SET catagory= '$catagory', department='$department' WHERE id= '$id'";
             $res = mysqli_query($conn, $insert);
             if ($insert) {
-                echo "Event Edited Successfully";
+                echo "Directory Edited Successfully";
                 header("location:addDirectory.php");
             } else {
                 echo "Error";
