@@ -49,15 +49,41 @@ mysqli_close($conn);
 <html>
 <head>
 <title>Login</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
-<h1>Login</h1>
-<form method="post">
-<p>Username: <input type="text" name="username" size="20" maxlength="20" /></p>
-<p>Password: <input type="password" name="password" size="20" maxlength="20" /></p>
-<p><input type="submit" name="submit" value="Login" /></p>
+
+<div class="d-flex justify-content-md-center align-items-center vh-100">
+    <div class="col-auto">
+<table class="table table-striped table-responsive" style="width:100%; text-align: center;">
+    <tr>
+        <td class="align-middle"><img src="login.png" class="img-fluid"></td>
+        <td class="align-middle">
+        <h1 class="display-1">Login</h1>    
+        <br>
+        <form method="post">
+<div class="form-floating mb-3">
+<input type="text" name="username" class="form-control" id="floatingInput" placeholder="Username"/>
+<label for="floatingInput">Username</label>
+</div>
+<div class="form-floating mb-3">
+<input type="password" name="password" class="form-control" id="floatingPassword"/>
+<label for="floatingInput">Password</label>
+</div>
+<input type="submit" name="submit" value="Login" class="btn btn-outline-success" />
 </form>
 
-<button onclick="window.location.href='signup.php'">Signup</button>
+<p class="lead"> Don't have an account?
+<button class="btn btn-outline-dark" onclick="window.location.href='signup.php'">Signup</button>
+</p></td>
+    </tr>
+</table>
+</div>
+  </div>
+    <script src="jquery-3.5.1.slim.min.js"></script>
+    <script src="popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
