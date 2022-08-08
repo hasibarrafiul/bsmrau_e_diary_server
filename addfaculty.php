@@ -204,7 +204,9 @@ if (isset($_POST["submit"]) && !empty($_FILES["file"]["name"])) {
 								<th class="text-center border"><strong>Name</strong></th>
 								<th class="text-center border"><strong>Designation</strong></th>
 								<th class="text-center border"><strong>Department</strong></th>
-								<th class="text-center border"><strong>Status</strong></th>
+								<th class="text-center border"><strong>Email</strong></th>
+								<th class="text-center border"><strong>Phone Number</strong></th>
+								<th class="text-center border"><strong>Office Number</strong></th>
 								<th class="text-center border"><strong>Action</strong></th>
 
 							</tr>
@@ -221,9 +223,12 @@ while ($row = mysqli_fetch_assoc($result)) { ?>
 								<td><?php echo $row["name"]; ?></td>
 								<td><?php echo $row["designation"]; ?></td>
 								<td><?php echo $row["department"]; ?></td>
-								<td><?php echo $row["status"]; ?></td>
+								<td><?php echo $row["email"]; ?></td>
+								<td><?php echo $row["mobilenumber"]; ?></td>
+								<td><?php echo $row["officenumber"]; ?></td>
 								<td>
 									<a class="btn btn-danger" href="deletefaculty.php?id=<?=$row["id"] ?>">Delete</a>
+									<a class="btn btn-danger" href="editfaculty.php?id=<?=$row["id"] ?>">Edit</a>
 								</td>
 							</tr>
 							<?php $count++;

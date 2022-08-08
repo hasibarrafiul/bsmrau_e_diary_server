@@ -1,4 +1,3 @@
-<!-- new  -->
 
 <?php
 session_start();
@@ -47,8 +46,8 @@ if (!$conn) {
 									<a class="nav-link active" aria-current="page" href="#">Home</a>
 								</li> -->
 						<?php
-if (isset($_SESSION["username"])) {
-    if ($_SESSION["username"] == "admin") { ?>
+			if (isset($_SESSION["username"])) {
+    			if ($_SESSION["username"] == "admin") { ?>
 						<li class="nav-item">
 							<a class="nav-link" href="home.php">Home</a>
 						</li>
@@ -59,10 +58,10 @@ if (isset($_SESSION["username"])) {
 							<a class="nav-link" href="addnotice.php">Notices</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="addfaculty.php">Faculty</a>
+							<a class="nav-link active" aria-current="page" href="addofficials.php">Officials</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link active" aria-current="page"  href="addofficials.php">Officials</a>
+							<a class="nav-link" href="addofficials.php">Officials</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="addnews.php">News</a>
@@ -77,24 +76,23 @@ if (isset($_SESSION["username"])) {
 						<?php
     }
 }
-if (isset($_SESSION["username"])) { ?>
+			if (isset($_SESSION["username"])) { ?>
 
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 								Welcome <strong class="text-black"><?php echo $_SESSION["username"]; ?></strong>
 							</a>
 							<ul class="dropdown-menu bg-danger" aria-labelledby="navbarDropdownMenuLink">
-								<li><a class="dropdown-item bg-danger text-white fw-bold text-center" href="addofficials.php?logout='1'">logout</a></li>
+								<li><a class="dropdown-item bg-danger text-white fw-bold text-center" href="addOfficials.php?logout='1'">logout</a></li>
 							</ul>
 						</li>
 						<?php
-} else { 
-	?>
+} else { ?>
 						<li class="nav-item">
 							<a class="btn btn-outline-primary fw-bold" class="nav-link text-primary" href="login.php">Login</a>
 						</li>
 
-						<?php
+<?php
 }
 ?>
 
@@ -104,7 +102,7 @@ if (isset($_SESSION["username"])) { ?>
 		<div class="row">
 			<div class="col-2"></div>
 			<div class="col-8">
-				<h1 class="text-center m-2 mb-4 p-1 border border-dark border-3 border-top-0 border-end-0 rounded">Insert Officials</h1>
+				<h1 class="text-center m-2 mb-4 p-1 border border-dark border-3 border-top-0 border-end-0 rounded">Edit Officials</h1>
 			</div>
 			<div class="col-2"></div>
 		</div>
@@ -144,7 +142,7 @@ if (isset($_SESSION["username"])) { ?>
                     
 					<div class="col-md-12">
 						<label for="formFile" class="form-label fw-bold">Image</label>
-						<input class="form-control" type="file" id="formFile" name="file" required>
+						<input class="form-control" type="file" id="formFile" name="file">
 					</div>
 					<div class="col-12 text-center">
 						<button id="liveAlertBtn" name="submit" type="submit" value="Upload" class="btn btn-primary btn-lg">Submit</button>
@@ -156,7 +154,7 @@ if (isset($_SESSION["username"])) { ?>
 		<?php
 
 if (isset($_POST["submit"]) && !empty($_FILES["file"]["name"])) {
-	$dir = "officialsimage/";
+	$dir = "Officialsimage/";
 	$fileName = basename($_FILES["file"]["name"]);
 	$path = $dir . $fileName;
 	$type = pathinfo($path, PATHINFO_EXTENSION);
@@ -167,13 +165,14 @@ if (isset($_POST["submit"]) && !empty($_FILES["file"]["name"])) {
 	$email = $_POST["email"];
 	$officenumber = $_POST["officenumber"];
     $allowed = ["jpg", "png", "jpeg", "gif", "pdf"];
+    $id = $_GET["id"];
     if (in_array($type, $allowed)) {
         if (move_uploaded_file($_FILES["file"]["tmp_name"], $path)) {
-            $insert = "INSERT into officials (name, designation, department, mobilenumber, email, officenumber, image) VALUES ('$name', '$designation', '$department', '$mobilenumber', '$email', '$officenumber', '$fileName')";
+            $insert = "UPDATE officials SET name= '$name', designation='$designation', department='$department', mobilenumber='$mobilenumber', email='$email', officenumber='$officenumber', image='$fileName' WHERE id= '$id'";
             $res = mysqli_query($conn, $insert);
             if ($insert) {
-                echo "Event Added";
-                //header('location: addofficials.php');
+                echo "Officials Edited Successfully";
+                //header("location:addOfficials.php");
 				echo("<script>location.href = 'addofficials.php';</script>");
             } else {
                 echo "Error";
@@ -186,63 +185,33 @@ if (isset($_POST["submit"]) && !empty($_FILES["file"]["name"])) {
     }
 } else {
 }
-?>
-		<div class="row">
-			<div class="col-2"></div>
-			<div class="col-8">
-				<h1 class="text-center m-2 mb-4 p-1 border border-dark border-3 border-top-0 border-end-0 rounded">View Faculty</h1>
-			</div>
-			<div class="col-2"></div>
-		</div>
-		<div class="row">
-			<div class="col-1"></div>
-			<div class="col-10">
-				<div class="row table-responsive m-3">
-					<table class="table table-lg align-middle">
-						<thead class="table-dark">
-							<tr>
-								<th class="text-center border"><strong>S.No</strong></th>
-								<th class="text-center border"><strong>Image</strong></th>
-								<th class="text-center border"><strong>Name</strong></th>
-								<th class="text-center border"><strong>Designation</strong></th>
-								<th class="text-center border"><strong>Department</strong></th>
-								<th class="text-center border"><strong>Email</strong></th>
-								<th class="text-center border"><strong>Phone Number</strong></th>
-								<th class="text-center border"><strong>Office Number</strong></th>
-								<th class="text-center border"><strong>Action</strong></th>
 
-							</tr>
-						</thead>
-						<tbody>
-							<?php
-$count = 1;
-$sel_query = "Select * from officials ORDER BY id desc;";
-$result = mysqli_query($conn, $sel_query);
-while ($row = mysqli_fetch_assoc($result)) { ?>
-							<tr>
-								<td><?php echo $count; ?></td>
-								<td><?php echo '<img src="officialsimage/' . $row["image"] . '" alt="HTML5 Icon" style="width:128px;height:128px">'; ?></td>
-								<td><?php echo $row["name"]; ?></td>
-								<td><?php echo $row["designation"]; ?></td>
-								<td><?php echo $row["department"]; ?></td>
-								<td><?php echo $row["email"]; ?></td>
-								<td><?php echo $row["mobilenumber"]; ?></td>
-								<td><?php echo $row["officenumber"]; ?></td>
-								<td>
-									<a class="btn btn-danger" href="deleteofficials.php?id=<?=$row["id"] ?>">Delete</a>
-									<a class="btn btn-danger" href="editofficials.php?id=<?=$row["id"] ?>">Edit</a>
-								</td>
-							</tr>
-							<?php $count++;
+
+if (isset($_POST["submit"]) && empty($_FILES["file"]["name"])) {
+	
+	$name = $_POST["name"];
+	$designation = $_POST["designation"];
+	$department = $_POST["department"];
+	$mobilenumber = $_POST["mobilenumber"];
+	$email = $_POST["email"];
+	$officenumber = $_POST["officenumber"];
+    $id = $_GET["id"];
+   
+            $insert = "UPDATE Officials SET name= '$name', designation='$designation', department='$department', mobilenumber='$mobilenumber', email='$email', officenumber='$officenumber' WHERE id= '$id'";
+            $res = mysqli_query($conn, $insert);
+            if ($insert) {
+                echo "Officials Edited Successfully";
+                //header("location:addOfficials.php");
+				echo("<script>location.href = 'addofficials.php';</script>");
+            } else {
+                echo "Error";
+            }
+} else {
 }
+
+
 ?>
-						</tbody>
-					</table>
-				</div>
-			</div>
-			<div class="col-1"></div>
-		</div>
-	</div>
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
