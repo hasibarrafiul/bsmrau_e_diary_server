@@ -101,7 +101,7 @@ if (!$conn) {
 		<div class="row">
 			<div class="col-2"></div>
 			<div class="col-8">
-				<h1 class="text-center m-2 mb-4 p-1 border border-dark border-3 border-top-0 border-end-0 rounded">Insert Video</h1>
+				<h1 class="text-center m-2 mb-4 p-1 border border-dark border-3 border-top-0 border-end-0 rounded">Insert Directory</h1>
 			</div>
 			<div class="col-2"></div>
 		</div>
@@ -147,7 +147,7 @@ if(isset($_POST["submit"]) && !empty($_POST["catagory"])){
 		<div class="row">
 			<div class="col-2"></div>
 			<div class="col-8">
-				<h1 class="text-center m-2 mb-4 p-1 border border-dark border-3 border-top-0 border-end-0 rounded">View News</h1>
+				<h1 class="text-center m-2 mb-4 p-1 border border-dark border-3 border-top-0 border-end-0 rounded">View Directory</h1>
 			</div>
 			<div class="col-2"></div>
 		</div>
